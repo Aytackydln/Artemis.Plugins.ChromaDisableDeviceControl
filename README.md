@@ -1,7 +1,7 @@
-# Congratulations, you can now start developing your plugin!
+## Modules
+- Disable device with Artemis launch
+- Disable Synapse bloat with every Artemis launch. This will prevent unnecessary Razer software while keeping game integrations
 
-Next steps:
-- Change the solution name to something more meaningful
-- Fill in the plugin.json file with the correct information
-- Fix the build.yml so it uploads the built plugin
-- Update this README.md file with relevant information about your plugin
+This plugin requires admin privilages, so using this will make Artemis restart with admin privileges each time it runs.
+
+To make the launch faster, make the shortcut and startup task run as administrator.

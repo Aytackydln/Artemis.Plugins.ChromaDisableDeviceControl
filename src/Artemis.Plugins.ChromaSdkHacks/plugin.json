@@ -1,0 +1,14 @@
+{
+    "Guid": "2C7B2A91-6ACF-409C-806E-0D9917187E13",
+    "Name": "Chroma SDK Hacks",
+    "Description": "Disables Chroma SDK's device control so that Razer devices can be controlled with only OpenRGB",
+    "Author": "Aytackydln",
+    "Repository": "https://github.com/Aytackydln/Artemis.Plugins.ChromaSdkHacks",
+    "Icon": "Snake",
+    "Version": "1.0.0.0",
+    "Main": "Artemis.Plugins.ChromaSdkHacks.dll",
+    "AutoEnableProperties": true,
+    "RequiresAdmin": true,
+    "Platforms": "Windows",
+    "Api": "1.0.0"
+}

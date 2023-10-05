@@ -2,7 +2,7 @@
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artemis.Plugins.ChromaDisableDeviceControl", "Artemis.Plugins.ChromaDisableDeviceControl\Artemis.Plugins.ChromaDisableDeviceControl.csproj", "{E4AA9438-EAD4-4B2D-BC47-43BE4A830158}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Artemis.Plugins.ChromaSdkHacks", "Artemis.Plugins.ChromaSdkHacks\Artemis.Plugins.ChromaSdkHacks.csproj", "{E4AA9438-EAD4-4B2D-BC47-43BE4A830158}"
 EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
