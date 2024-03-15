@@ -5,20 +5,13 @@ using Artemis.Core.Modules;
 namespace Artemis.Plugins.ChromaSdkHacks;
 
 [PluginFeature(Name = "Disable Bloat")]
-public class DisableBloatModule : Module
+public class DisableBloatModule(PluginSettings pluginSettings) : Module
 {
     private bool _afterLaunch;
 
-    private readonly PluginSettings _pluginSettings;
-
-    public DisableBloatModule(PluginSettings pluginSettings)
-    {
-        _pluginSettings = pluginSettings;
-    }
-
     public override void Enable()
     {
-        var manuallyEnabled = _pluginSettings.GetSetting("DisableBloat", false);
+        var manuallyEnabled = pluginSettings.GetSetting("DisableBloat", false);
         if (!manuallyEnabled.Value && !_afterLaunch)
         {
             _afterLaunch = true;
