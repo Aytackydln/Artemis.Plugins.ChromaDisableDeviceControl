@@ -19,7 +19,7 @@ public static class RazerChromaUtils
 
         List<Task> tasks = [];
         var chromaPath = GetChromaPath();
-        if (chromaPath != null)
+        if (chromaPath != null && File.Exists(chromaPath))
         {
             var length = File.Open(Path.Combine(chromaPath, "Devices.xml"), FileMode.Open, FileAccess.Read, FileShare.ReadWrite).Length;
             if (length <= file.Length)
@@ -29,7 +29,7 @@ public static class RazerChromaUtils
         }
 
         var chromaPath64 = GetChromaPath64();
-        if (chromaPath64 != null)
+        if (chromaPath64 != null && File.Exists(chromaPath64))
         {
             var length64 = File.Open(Path.Combine(chromaPath64, "Devices.xml"), FileMode.Open, FileAccess.Read, FileShare.ReadWrite).Length;
             if (length64 <= file.Length)
