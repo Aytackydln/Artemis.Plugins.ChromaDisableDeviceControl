@@ -38,7 +38,7 @@ public static class RazerChromaUtils
             }
         }
 
-        if (tasks.Count > 0)
+        if (tasks.Count == 0)
         {
             return;
         }
