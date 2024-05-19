@@ -9,42 +9,43 @@ namespace Artemis.Plugins.ChromaSdkHacks;
 
 public static class RazerChromaUtils
 {
+    private const string DevicesXml = "Devices.xml";
+    private const string FileContent = """
+                                       <?xml version="1.0" encoding="utf-8"?>
+                                       <devices>
+                                       </devices>
+                                       """;
+
     public static async Task DisableDeviceControlAsync()
     {
-        const string file = """
-                            <?xml version="1.0" encoding="utf-8"?>
-                            <devices>
-                            </devices>
-                            """;
-
         List<Task> tasks = [];
-        var chromaPath = GetChromaPath();
-        if (chromaPath != null && File.Exists(chromaPath))
-        {
-            var length = File.Open(Path.Combine(chromaPath, "Devices.xml"), FileMode.Open, FileAccess.Read, FileShare.ReadWrite).Length;
-            if (length <= file.Length)
-            {
-                tasks.Add(File.WriteAllTextAsync(Path.Combine(chromaPath, "Devices.xml"), file));
-            }
-        }
-
-        var chromaPath64 = GetChromaPath64();
-        if (chromaPath64 != null && File.Exists(chromaPath64))
-        {
-            var length64 = File.Open(Path.Combine(chromaPath64, "Devices.xml"), FileMode.Open, FileAccess.Read, FileShare.ReadWrite).Length;
-            if (length64 <= file.Length)
-            {
-                tasks.Add(File.WriteAllTextAsync(Path.Combine(chromaPath64, "Devices.xml"), file));
-            }
-        }
+        ReplaceDevicesXml(tasks, GetChromaPath());
+        ReplaceDevicesXml(tasks, GetChromaPath64());
 
         if (tasks.Count == 0)
         {
             return;
         }
+
         await Task.WhenAll(tasks.ToArray());
 
         RestartChromaService();
+    }
+
+    private static void ReplaceDevicesXml(List<Task> tasks, string? chromaPath)
+    {
+        if (chromaPath == null) return;
+
+        var xmlFile = Path.Combine(chromaPath, DevicesXml);
+        if (File.Exists(xmlFile))
+        {
+            var length = File.Open(xmlFile, FileMode.Open, FileAccess.Read, FileShare.ReadWrite).Length;
+            if (length <= FileContent.Length)
+            {
+                return;
+            }
+        }
+        tasks.Add(File.WriteAllTextAsync(xmlFile, FileContent));
     }
 
     public static void DisableChromaBloat()
