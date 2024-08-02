@@ -3,7 +3,7 @@ name: Build Plugins
 on:
   push:
     tags:
-      - '*.*.*'
+      - 'v*.*.*'
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git commit -m "update version ${{ steps.semantic_release_info.outputs.git_tag }}"
+          git commit -m "update version ${{ env.RELEASE_VERSION }}"
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
