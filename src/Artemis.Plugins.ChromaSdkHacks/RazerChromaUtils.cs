@@ -50,20 +50,35 @@ public static class RazerChromaUtils
 
     public static void DisableChromaBloat()
     {
-        DisableService("Razer Chroma SDK Server");
-        DisableService("Razer Chroma Stream Server");
-        DisableService("Razer Central Service");
-        DisableService("Razer Game Manager Service");
-        DisableService("Razer Synapse Service");
+        string[] services =
+        [
+            "Razer Chroma SDK Server",
+            "Razer Chroma Stream Server",
+            "Razer Central Service",
+            "Razer Elevation Service",
+            "Razer Game Manager Service 3",
+            "Razer Synapse Service",
+        ];
+        foreach (var service in services)
+        {
+            DisableService(service);
+        }
     }
 
     private static void DisableService(string serviceName)
     {
-        using var service = new ServiceController(serviceName);
-        ServiceHelper.ChangeStartMode(service, ServiceStartMode.Manual);
-        if (!service.CanStop) return;
-        service.Stop();
-        service.WaitForStatus(ServiceControllerStatus.Stopped);
+        try
+        {
+            using var service = new ServiceController(serviceName);
+            ServiceHelper.ChangeStartMode(service, ServiceStartMode.Manual);
+            if (!service.CanStop) return;
+            service.Stop();
+            service.WaitForStatus(ServiceControllerStatus.Stopped);
+        }
+        catch (Exception)
+        {
+            //whatever
+        }
     }
 
     private static void RestartChromaService()

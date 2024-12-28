@@ -5,7 +5,7 @@
   "Author": "Aytackydln",
   "Repository": "https://github.com/Aytackydln/Artemis.Plugins.ChromaSdkHacks",
   "Icon": "Snake",
-  "Version": "1.1.6",
+  "Version": "1.1.7",
   "Main": "Artemis.Plugins.ChromaSdkHacks.dll",
   "AutoEnableProperties": true,
   "RequiresAdmin": true,

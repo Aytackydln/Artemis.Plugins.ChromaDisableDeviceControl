@@ -7,7 +7,6 @@ on:
 
 jobs:
   build:
-    if: ${{ github.repository != 'Artemis-RGB/Artemis.PluginTemplate' && '[ -f .template ]' }}
     runs-on: ubuntu-latest
 
     steps:
